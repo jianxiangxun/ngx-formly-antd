@@ -23,7 +23,7 @@ after_script:
   - git config user.email "${USER_EMAIL}"
   - git add .
   - git commit -m "release doc"
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REPO}" gh-pages:gh-pages
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REPO}"
 
 branches:
   only:
