@@ -14,15 +14,13 @@ script:
   - npm run build:doc -- --base-href=${BASE_HREF}
 
 after_script:
-  - git clone https://${GH_REPO} .temp
-  - mv .temp/.git dist/doc
-  - rm -rf .temp
   - cd dist/doc
-  - git checkout ${GH_BRANCH}
+  - git init
+  - git checkout -b ${GH_BRANCH}
   - git config user.name "${USER_NAME}"
   - git config user.email "${USER_EMAIL}"
   - git add .
-  - git commit -m "release doc"
+  - git commit -m "release docs" --no-verify
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REPO}" ${GH_BRANCH}:${GH_BRANCH}
 
 branches:
