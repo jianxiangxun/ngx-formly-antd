@@ -6,7 +6,7 @@
     "start:doc": "ng serve doc --hmr",
     "build:doc": "ng build doc --prod",
     "start:lib": "ng build lib --watch",
-    "build:lib": "ng build lib",
+    "build:lib": "ng build lib --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
