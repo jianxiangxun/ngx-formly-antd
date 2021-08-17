@@ -18,12 +18,12 @@ after_script:
   - mv .temp/.git dist/doc
   - rm -rf .temp
   - cd dist/doc
-  - git checkout gh-pages
+  - git checkout ${GH_BRANCH}
   - git config user.name "${USER_NAME}"
   - git config user.email "${USER_EMAIL}"
   - git add .
   - git commit -m "release doc"
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REPO}"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REPO}" ${GH_BRANCH}:${GH_BRANCH}
 
 branches:
   only:
