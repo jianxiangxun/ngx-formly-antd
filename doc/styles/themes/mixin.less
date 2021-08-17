@@ -1,0 +1,14 @@
+.theme(@rules) {
+  :host-context(.default) {
+    @import './default.less';
+    @rules();
+  }
+  :host-context(.compact) {
+    @import './compact.less';
+    @rules();
+  }
+  :host-context(.dark) {
+    @import './dark.less';
+    @rules();
+  }
+}

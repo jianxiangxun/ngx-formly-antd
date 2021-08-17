@@ -1,0 +1,29 @@
+language: node_js
+
+node_js: "12.18.1"
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm i
+
+script:
+  - npx ng build doc --prod --base-href=${BASE_HREF}
+
+after_script:
+  - git clone https://${GH_REPO} .temp
+  - mv .temp/.git dist/doc
+  - rm -rf .temp
+  - cd dist/doc
+  - git checkout gh-pages
+  - git config user.name "${USER_NAME}"
+  - git config user.email "${USER_EMAIL}"
+  - git add .
+  - git commit -m "release doc"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REPO}" gh-pages:gh-pages
+
+branches:
+  only:
+    - master

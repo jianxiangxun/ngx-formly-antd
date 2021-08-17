@@ -1,0 +1,5 @@
+<ng-container *ngFor="let demo of demos | keyvalue">
+  <nz-card [nzTitle]="demo.key" [style.margin-bottom.px]="24">
+    <doc-demo [config]="demo.value.config" [raw]="demo.value.raw"></doc-demo>
+  </nz-card>
+</ng-container>

@@ -1,0 +1,21 @@
+<div [fxLayout]="isLargeScreen ? 'row' : 'column'">
+  <div fxFlex>
+    <nz-divider nzText="Form" nzOrientation="left" nzPlain></nz-divider>
+    <form [formGroup]="form">
+      <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+    </form>
+    <nz-divider nzText="Model" nzOrientation="left" nzPlain></nz-divider>
+    <doc-highlight [raw]="model | json" [language]="'json'"></doc-highlight>
+  </div>
+  <nz-divider *ngIf="isLargeScreen" nzType="vertical" class="vertical-divider"></nz-divider>
+  <nz-divider *ngIf="!isLargeScreen && expanded" nzText="Code" nzOrientation="left" nzPlain></nz-divider>
+  <div fxFlex style="position: relative;" *ngIf="isLargeScreen || expanded">
+    <div [class.source]="isLargeScreen">
+      <doc-highlight [raw]="raw" [language]="'typescript'"></doc-highlight>
+      <span class="source-copy" nz-typography nzCopyable [nzCopyText]="raw" [nzCopyTooltips]="null" [nzCopyIcons]="['copy', 'copy']"></span>
+    </div>
+  </div>
+  <div *ngIf="!isLargeScreen" class="source-trigger" [class.source-trigger-sticky]="expanded" (click)="expanded = !expanded">
+    <i nz-icon [nzType]="expanded ? 'caret-up' : 'caret-down'"></i>
+  </div>
+</div>
