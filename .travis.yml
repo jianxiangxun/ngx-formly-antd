@@ -10,7 +10,8 @@ install:
   - npm i
 
 script:
-  - npx ng build doc --prod --base-href=${BASE_HREF}
+  - npm run build:lib
+  - npm run build:doc -- --base-href=${BASE_HREF}
 
 after_script:
   - git clone https://${GH_REPO} .temp
