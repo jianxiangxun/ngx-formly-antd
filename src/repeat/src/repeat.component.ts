@@ -50,14 +50,17 @@ export class RepeatComponent extends FieldArrayType implements OnInit {
       ) => {
         this.remove.call(this, index, options);
         this.addWhenEmpty();
+        this.cdr.detectChanges();
       },
     });
+    this.form.valueChanges.subscribe(() => {
+      this.cdr.detectChanges();
+    })
   }
 
   private addWhenEmpty(): void {
     if (this.to.notAllowEmpty && !this.model?.length) {
       this.add(undefined, this.field.defaultValue, { markAsDirty: false });
-      this.cdr.detectChanges();
     }
   }
 

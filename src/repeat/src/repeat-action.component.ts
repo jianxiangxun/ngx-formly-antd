@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { FormArray } from '@angular/forms';
 import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 
 type NzLegacyButtonType = 'primary' | 'default' | 'dashed' | 'link' | 'text';
@@ -24,6 +25,7 @@ type NzLegacyButtonType = 'primary' | 'default' | 'dashed' | 'link' | 'text';
   `,
   styles: [
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RepeatActionComponent extends FieldType {
   get nzType(): NzLegacyButtonType|null {
@@ -39,12 +41,12 @@ export class RepeatActionComponent extends FieldType {
     return type;
   }
 
-  findRoot(node: FormlyFieldConfig|undefined, type: string): FormlyFieldConfig|undefined {
+  findRoot(node: FormlyFieldConfig|undefined, compare: (node: FormlyFieldConfig) => boolean): FormlyFieldConfig|undefined {
     if (node?.parent) {
-      if (node.parent?.type === type) {
+      if (compare(node.parent)) {
         return node.parent;
       } else {
-        return this.findRoot(node.parent, type);
+        return this.findRoot(node.parent, compare);
       }
     } else {
       return undefined;
@@ -53,9 +55,12 @@ export class RepeatActionComponent extends FieldType {
 
 
   onClick(): void {
-    const parent = this.findRoot(this.field, 'formly-group');
-    const root = this.findRoot(this.field, 'repeat');
-    console.log(this, parent, root);
+    const parent = this.findRoot(this.field, (parent: FormlyFieldConfig) => {
+      return parent.form instanceof FormArray;
+    });
+    const root = this.findRoot(this.field, (parent: FormlyFieldConfig) => {
+      return parent.type === 'repeat';
+    });
     if (root) {
       const index = parseInt(parent?.key as string, 10);
       if (this.to.action === 'add') {
@@ -63,6 +68,7 @@ export class RepeatActionComponent extends FieldType {
       } else if (this.to.action === 'copy') {
         root?.templateOptions?.add(index + 1, parent?.model);
       } else if (this.to.action === 'remove') {
+        console.warn(index, this.field);
         root?.templateOptions?.remove(index);
       }
     }
