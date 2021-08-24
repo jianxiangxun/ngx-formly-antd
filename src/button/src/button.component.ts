@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 
 type NzLegacyButtonType = 'primary' | 'dashed' | 'link' | 'text';
@@ -15,6 +15,7 @@ type NzLegacyButtonType = 'primary' | 'dashed' | 'link' | 'text';
       [nzGhost]="to.ghost"
       [nzBlock]="to.block"
       [nzDanger]="to.danger"
+      [disabled]="to.disabled"
       [formlyAttributes]="field"
     >
       <i *ngIf="to.icon" nz-icon [nzType]="to.icon"></i>

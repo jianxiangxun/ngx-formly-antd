@@ -4,6 +4,7 @@ import { NgxFormlyAntdCardModule } from 'ngx-formly-antd/card';
 import { NgxFormlyAntdFormItemModule } from 'ngx-formly-antd/form-item';
 import { NgxFormlyAntdGridModule } from 'ngx-formly-antd/grid';
 import { NgxFormlyAntdRepeatModule } from 'ngx-formly-antd/repeat';
+import { NgxFormlyAntdButtonModule } from 'ngx-formly-antd/button';
 
 
 import { NgxFormlyAntdCheckboxModule } from 'ngx-formly-antd/checkbox';
@@ -19,6 +20,7 @@ import { NgxFormlyAntdSelectModule } from 'ngx-formly-antd/select';
     NgxFormlyAntdCardModule,
     NgxFormlyAntdGridModule,
     NgxFormlyAntdRepeatModule,
+    NgxFormlyAntdButtonModule,
 
     NgxFormlyAntdInputModule,
     NgxFormlyAntdSelectModule,

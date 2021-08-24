@@ -1,2 +1,2 @@
 
-export { RepeatModule as NgxFormlyAntdRepeatModule } from './button.module';
+export { ButtonModule as NgxFormlyAntdButtonModule } from './button.module';

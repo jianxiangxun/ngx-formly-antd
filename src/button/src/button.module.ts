@@ -31,4 +31,4 @@ import { ButtonComponent } from './button.component';
     }),
   ],
 })
-export class RepeatModule { }
+export class ButtonModule { }
