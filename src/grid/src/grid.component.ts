@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FieldType } from '@ngx-formly/core';
 
@@ -33,6 +33,7 @@ import { FieldType } from '@ngx-formly/core';
     </div>
   `,
   styles: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GridComponent extends FieldType {
   get control(): FormControl {

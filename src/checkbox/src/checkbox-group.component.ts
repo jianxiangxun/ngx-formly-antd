@@ -1,4 +1,4 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, forwardRef } from '@angular/core';
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { FieldType } from '@ngx-formly/core';
 
@@ -20,6 +20,7 @@ import { FieldType } from '@ngx-formly/core';
       </ng-container>
     </nz-checkbox-wrapper>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

@@ -15,6 +15,7 @@ import { FieldType } from '@ngx-formly/core';
   `,
   styles: [
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxComponent extends FieldType {
   get indeterminate(): boolean {

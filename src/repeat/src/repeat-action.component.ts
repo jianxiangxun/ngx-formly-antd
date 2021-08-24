@@ -68,7 +68,6 @@ export class RepeatActionComponent extends FieldType {
       } else if (this.to.action === 'copy') {
         root?.templateOptions?.add(index + 1, parent?.model);
       } else if (this.to.action === 'remove') {
-        console.warn(index, this.field);
         root?.templateOptions?.remove(index);
       }
     }

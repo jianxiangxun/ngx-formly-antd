@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FieldType } from '@ngx-formly/core';
 
@@ -26,6 +26,7 @@ import { FieldType } from '@ngx-formly/core';
   `,
   styles: [
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DateComponent extends FieldType {
   get control(): FormControl {
